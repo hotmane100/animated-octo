@@ -67,11 +67,15 @@ function bullet_collision()
             player1.bullets.splice(i, 1);
             i--;
         }
-        if (between(ennemy1.position.x, player1.position.x + 100, player1.position.x - 100)
-            && between(ennemy1.position.y, player1.position.y + 100, player1.position.y - 100))
+        if (between(ennemy1.graphic.position.x, player1.graphic.position.x - 10, player1.graphic.position.x + 10)
+            && between(ennemy1.graphic.position.y, player1.graphic.position.y - 10, player1.graphic.position.y + 10))
         {
             player1.resetPosition();
-            console.log("banco");
+        }
+        if (between(ennemy1.graphic.position.x, player1.bullets[i].position.x - 10, player1.bullets[i].position.x + 10)
+            && between(ennemy1.graphic.position.y, player1.bullets[i].position.y - 10, player1.bullets[i].position.y + 10))
+        {
+            scene.remove(ennemy1);
         }
     }
 
