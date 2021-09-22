@@ -102,7 +102,7 @@ function player_falling()
             && (y > tileY) 
             && (y < mtileY))
         {
-           player1.dead();
+           player1.resetPosition();
         }
     }
 
