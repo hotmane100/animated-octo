@@ -1,5 +1,9 @@
 var bulletTime1 = 0;
 
+function between(x, min, max) {
+    return x >= min && x <= max;
+  }
+
 var bullet_player1_material = new THREE.MeshLambertMaterial(
 {
     color: 0x00ff00, 
@@ -50,6 +54,24 @@ function bullet_collision()
             scene.remove(player1.bullets[i]);
             player1.bullets.splice(i, 1);
             i--;
+        }
+    }
+
+    //collision between bullet and ennemy
+    for (var i = 0; i < player1.bullets.length; i++)
+    {
+        if (Math.abs(player1.bullets[i].position.x) >= WIDTH / 2 ||
+            Math.abs(player1.bullets[i].position.y) >= HEIGHT / 2)
+        {
+            scene.remove(player1.bullets[i]);
+            player1.bullets.splice(i, 1);
+            i--;
+        }
+        if (between(ennemy1.position.x, player1.position.x + 100, player1.position.x - 100)
+            && between(ennemy1.position.y, player1.position.y + 100, player1.position.y - 100))
+        {
+            player1.resetPosition();
+            console.log("banco");
         }
     }
 
